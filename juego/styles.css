@@ -1,0 +1,145 @@
+/*  Tipo de letra */
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Fuzzy Bubbles', cursive;
+    background: rgb(125, 229, 237);
+    background: linear-gradient(270deg,
+            rgba(125, 229, 237, 1) 6%,
+            rgba(107, 153, 208, 1) 85%,
+            rgba(85, 120, 173, 1) 100%);
+}
+
+/* Sección de selección de mascotas */
+#seleccionar_mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Título principal */
+.titulo {
+    font-size: 3em;
+    font-weight: 900;
+}
+
+/* Subtitulo */
+.subtitulo {
+    font-size: 30px;
+}
+
+/* Animación de tipo maquina para el título */
+h1 span{
+    display: block;
+    white-space: nowrap;
+    border-right: 3px solid transparent;
+    width: 12ch;
+    animation: typing 2s steps(12),
+        blink .5s infinite step-end alternate;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent
+    }
+}
+
+/* Opciones  de las mascotas a escoger */
+.tarjetas {
+    display: flow-root;
+    gap: 10px;
+}
+
+/* Estilos a cada una de las opciones de mascota */
+.tarjeta_n64 {
+    width: 180px;
+    height: 100px;
+    background: rgba(165, 241, 233, 0.3);
+    padding: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1.5px solid #A5F1E9;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Íconos en las tarjetas */
+.tarjeta_n64 img{
+    width: 80px;
+}
+
+/* Ocultar radios */
+input{
+    display: none;
+}
+
+#btn_mascota{
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Sección del ataques */
+#seleccionar_ataque{
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botón de ataque */
+
+.btn_ataque{
+    background-color: #E1FFEE;
+    border-radius: 20px;
+    border-color: transparent;
+    width: 100px;
+    cursor: pointer;
+}
+
+/* Resultado del ataque */
+#resultado{
+    font-size: 2em;
+    width: 280px;
+    background: rgba(255, 192, 203, 0.5);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px solid pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botón de reiniciado */
+#btn_reiniciar{
+    font-size: 1em;
+    font-weight: 600;
+    font-optical-sizing: unset;
+    color: rgb(231, 22, 22);
+    width: 320px;
+    padding: 5px 0 5px 0;
+    margin-top: -15px;
+    background: rgba(195, 47, 72, 0.5);
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
