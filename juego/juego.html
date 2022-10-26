@@ -1,88 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
     <title>JUEGO</title>
-</head>
+  </head>
 
-<body>
-    <!-- Selección de mascota del jugador -->
-    <section id="seleccionar_mascota">
-
+  <body>
+      <!-- Selección de mascota del jugador -->
+      <section id="seleccionar_mascota">
         <h1 class="titulo"><span>🌱💧🔥N64🌱💧🔥</span></h1>
         <h2 class="subtitulo">Elige tu mascota:</h2>
         <div class="tarjetas">
-            <input type="radio" name="mascota" id="hipodoge" />
-            <label class="tarjeta_n64" for="hipodoge">
-                <p>Hipodoge</p>
-                <img src="./img/hipodoge.webp" alt="Hipodoge">
-            </label>
+          <input type="radio" name="mascota" id="hipodoge" />
+          <label class="tarjeta_n64" for="hipodoge">
+            <p>Hipodoge</p>
+            <img src="./img/hipodoge.webp" alt="Hipodoge" />
+          </label>
 
-            <input type="radio" name="mascota" id="capipepo" />
-            <label class="tarjeta_n64" for="capipepo">
-                <p>Capipepo</p>
-                <img src="./img/capipepo.webp" alt="Hipodoge">
-            </label>
+          <input type="radio" name="mascota" id="capipepo" />
+          <label class="tarjeta_n64" for="capipepo">
+            <p>Capipepo</p>
+            <img src="./img/capipepo.webp" alt="Hipodoge" />
+          </label>
 
-            <input type="radio" name="mascota" id="ratigueya" />
-            <label class="tarjeta_n64" for="ratigueya">
-                <p>Ratigueya</p>
-                <img src="./img/ratigueya.webp" alt="Hipodoge">
-            </label>
+          <input type="radio" name="mascota" id="ratigueya" />
+          <label class="tarjeta_n64" for="ratigueya">
+            <p>Ratigueya</p>
+            <img src="./img/ratigueya.webp" alt="Hipodoge" />
+          </label>
         </div>
 
-
         <button id="btn_mascota">Seleccionar</button>
+      </section>
 
-    </section>
-
-    <!-- Mascotas seleccionadas por ambos jugadores -->
-    <section id="seleccionar_ataque">
+      <!-- Mascotas seleccionadas por ambos jugadores -->
+      <section id="seleccionar_ataque">
         <h1 class="titulo"><span>🌱💧🔥N64🌱💧🔥</span></h1>
 
         <h2 class="subtitulo">Elige tu ataque:</h2>
 
         <!-- Selección de ataque-->
         <div class="tarjeta_ataque">
-            <button id="btn_fuego" class="btn_ataque">Fuego 🔥</button>
-            <button id="btn_agua" class="btn_ataque">Agua 💧</button>
-            <button id="btn_tierra" class="btn_ataque">Tierra 🌱</button>
+          <button id="btn_fuego" class="btn_ataque">Fuego 🔥</button>
+          <button id="btn_agua" class="btn_ataque">Agua 💧</button>
+          <button id="btn_tierra" class="btn_ataque">Tierra 🌱</button>
         </div>
 
         <!-- Resultado de los combates -->
         <div id="mensajes">
+          <p id="resultado">¡Mucha Suerte!</p>
 
-            <p id="resultado">¡Mucha Suerte!</p>
-
-            <!-- Reinicio del juego -->
-            <section id="reiniciar">
-                <button id="btn_reiniciar">Reiniciar</button>
-            </section>
-
+          <!-- Reinicio del juego -->
+          <section id="reiniciar">
+            <button id="btn_reiniciar">Reiniciar</button>
+          </section>
         </div>
 
         <!-- Resultados de ataques -->
         <div class="ataques">
-            <div class="ataques_jugador">
-                <p id="vidasjugador">3</p>
-                <p id="mascotajugador"></p>
-                <div id="ataque_jugador"></div>
-            </div>
-            <div class="ataques_enemigos">
-                <p id="vidasenemigo">3</p>
-                <p id="mascotaenemigo"></p>
-                <div id="ataque_enemigo"></div>
-            </div>
+          <div class="ataques_jugador">
+            <p id="vidasjugador">3</p>
+            <p id="mascotajugador"></p>
+            <div id="ataque_jugador"></div>
+          </div>
+          <div class="ataques_enemigos">
+            <p id="vidasenemigo">3</p>
+            <p id="mascotaenemigo"></p>
+            <div id="ataque_enemigo"></div>
+          </div>
         </div>
-    </section>
+      </section>
     <script src="./js/juego.js"></script>
-</body>
-
+  </body>
 </html>

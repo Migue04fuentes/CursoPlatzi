@@ -13,11 +13,12 @@ body {
             rgba(85, 120, 173, 1) 100%);
 }
 
+
 /* Sección de selección de mascotas */
 #seleccionar_mascota {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -149,6 +150,13 @@ input:checked + label{
     text-shadow: 1px 1px #fff;
 }
 
+/* Contendor de resultados */
+#mensajes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Resultado del ataque */
 #resultado {
     font-size: 2em;
@@ -159,7 +167,6 @@ input:checked + label{
     border-radius: 20px;
     border: 1px solid pink;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -168,7 +175,7 @@ input:checked + label{
     font-size: 1em;
     font-weight: 600;
     color: rgb(231, 22, 22);
-    width: 320px;
+    width: 100px;
     padding: 5px 0 5px 0;
     margin-top: -15px;
     background: rgba(195, 47, 72, 0.5);
@@ -177,6 +184,12 @@ input:checked + label{
     display: flex;
     justify-content: center;
     cursor: pointer;
+}
+
+#btn_reiniciar:hover{
+    width: 105px;
+    height: 30px;
+    padding: 7px 0 5px 0;
 }
 
 /* Contenedor de los ataques */
