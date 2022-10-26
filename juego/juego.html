@@ -8,9 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap" rel="stylesheet">
-    <title>JUEGO</title>
-    <script src="./js/juego.js"></script>
     <link rel="stylesheet" href="./styles.css">
+    <title>JUEGO</title>
 </head>
 
 <body>
@@ -20,23 +19,23 @@
         <h1 class="titulo"><span>🌱💧🔥N64🌱💧🔥</span></h1>
         <h2 class="subtitulo">Elige tu mascota:</h2>
         <div class="tarjetas">
+            <input type="radio" name="mascota" id="hipodoge" />
             <label class="tarjeta_n64" for="hipodoge">
                 <p>Hipodoge</p>
                 <img src="./img/hipodoge.webp" alt="Hipodoge">
             </label>
-            <input type="radio" name="mascota" id="hipodoge" />
 
+            <input type="radio" name="mascota" id="capipepo" />
             <label class="tarjeta_n64" for="capipepo">
                 <p>Capipepo</p>
                 <img src="./img/capipepo.webp" alt="Hipodoge">
             </label>
-            <input type="radio" name="mascota" id="capipepo" />
 
+            <input type="radio" name="mascota" id="ratigueya" />
             <label class="tarjeta_n64" for="ratigueya">
                 <p>Ratigueya</p>
                 <img src="./img/ratigueya.webp" alt="Hipodoge">
             </label>
-            <input type="radio" name="mascota" id="ratigueya" />
         </div>
 
 
@@ -51,7 +50,7 @@
         <h2 class="subtitulo">Elige tu ataque:</h2>
 
         <!-- Selección de ataque-->
-        <div>
+        <div class="tarjeta_ataque">
             <button id="btn_fuego" class="btn_ataque">Fuego 🔥</button>
             <button id="btn_agua" class="btn_ataque">Agua 💧</button>
             <button id="btn_tierra" class="btn_ataque">Tierra 🌱</button>
@@ -70,17 +69,20 @@
         </div>
 
         <!-- Resultados de ataques -->
-        <div>
-            <div id="ataque_jugador"></div>
-            <div id="ataque_enemigo"></div>
-            <p>Tú mascota <span id="mascotajugador"></span> tiene <span id="vidasjugador">3</span> vidas</p>
-            <p>La mascota <span id="mascotaenemigo"></span> del enemigo tiene <span id="vidasenemigo">3</span> vidas</p>
+        <div class="ataques">
+            <div class="ataques_jugador">
+                <p id="vidasjugador">3</p>
+                <p id="mascotajugador"></p>
+                <div id="ataque_jugador"></div>
+            </div>
+            <div class="ataques_enemigos">
+                <p id="vidasenemigo">3</p>
+                <p id="mascotaenemigo"></p>
+                <div id="ataque_enemigo"></div>
+            </div>
         </div>
-
-
-
     </section>
-
+    <script src="./js/juego.js"></script>
 </body>
 
 </html>

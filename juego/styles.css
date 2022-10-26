@@ -1,5 +1,6 @@
 /*  Tipo de letra */
-@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&family=Ubuntu:wght@500&display=swap');
+
 
 body {
     padding: 0;
@@ -32,7 +33,7 @@ body {
 }
 
 /* Animación de tipo maquina para el título */
-h1 span{
+h1 span {
     display: block;
     white-space: nowrap;
     border-right: 3px solid transparent;
@@ -77,48 +78,82 @@ h1 span{
     cursor: pointer;
 }
 
+.tarjeta_n64:hover{
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+    transform: translateY(-3%);
+}
+
 /* Íconos en las tarjetas */
-.tarjeta_n64 img{
+.tarjeta_n64 img {
     width: 80px;
 }
 
 /* Ocultar radios */
-input{
+input {
     display: none;
 }
 
-#btn_mascota{
-  width: 180px;
-  height: 40px;
-  border-radius: 20px;
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  cursor: pointer;
+/* Cambiar color al seleccionar checked */
+input:checked + label{
+  background-color: rgba(49, 198, 212, 0.5);
+  box-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+  transform: translateY(-3%);
+}
+
+
+/* Botón de seleccionado de mascota */
+#btn_mascota {
+    font-family: 'Ubuntu', sans-serif;
+    width: 180px;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+#btn_mascota:hover{
+    background-color: rgba(127, 255, 212, 0.5);
+    width: 182px;
+    height: 42px;
 }
 
 
 /* Sección del ataques */
-#seleccionar_ataque{
+#seleccionar_ataque {
     flex-direction: column;
     align-items: center;
 }
 
-/* Botón de ataque */
+/* Contenedor de los botones de ataque */
+.tarjeta_ataque {
+    display: flex;
+}
 
-.btn_ataque{
-    background-color: #E1FFEE;
-    border-radius: 20px;
+/* Botón de ataque */
+.btn_ataque {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: rgb(225, 255, 238);
+    margin: 10px;
+    border-radius: 10px;
     border-color: transparent;
-    width: 100px;
+    width: 120px;
+    height: 30px;
     cursor: pointer;
 }
 
+.btn_ataque:hover{
+    background-color: rgb(166, 255, 204);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px #fff;
+}
+
 /* Resultado del ataque */
-#resultado{
+#resultado {
     font-size: 2em;
     width: 280px;
-    background: rgba(255, 192, 203, 0.5);
+    background: rgba(255, 255, 255, 0.556);
     padding: 20px;
     margin-top: 20px;
     border-radius: 20px;
@@ -129,10 +164,9 @@ input{
 }
 
 /* Botón de reiniciado */
-#btn_reiniciar{
+#btn_reiniciar {
     font-size: 1em;
     font-weight: 600;
-    font-optical-sizing: unset;
     color: rgb(231, 22, 22);
     width: 320px;
     padding: 5px 0 5px 0;
@@ -142,4 +176,44 @@ input{
     border-radius: 5px;
     display: flex;
     justify-content: center;
+    cursor: pointer;
+}
+
+/* Contenedor de los ataques */
+.ataques {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    align-items: center;
+}
+
+/* Dividir por columnas los ataque de los contrincantes */
+.ataques_enemigos, .ataques_jugador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Tarjetas responsive */
+@media (max-width: 360px) {
+    .tarjetas {
+        flex-direction: column;
+    }
+
+    .tarjeta_ataque {
+        flex-direction: column;
+    }
+
+}
+
+/* Títulos responsive */
+@media (max-width: 395px){
+
+    .titulo {
+        font-size: 2.5em;
+    }
+    
+    .subtitulo{
+        font-size: 1.5em;
+    }
+
 }

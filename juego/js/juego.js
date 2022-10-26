@@ -3,16 +3,19 @@ let ataqueenemigo;
 let vidasjugador = 3;
 let vidasenemigo = 3;
 
+// contenedor de la sección de enfrentamientos
+let sectionataque = document.getElementById("seleccionar_ataque");
+
+
 // Función llamada al cargar la página
 function iniciarjuego() {
+    //    ocultar sesión de los ataques
+    sectionataque.style.display = 'none';
 
     // ocultar botón de reinicio´
     let sectionreiniciar = document.getElementById('reiniciar');
     sectionreiniciar.style.display = 'none';
 
-    //    ocultar sesión de los ataques
-    let sectionataque = document.getElementById("seleccionar_ataque");
-    sectionataque.style.display = 'none';
 
     // Selección de mascota
     let btnmascotajugador = document.getElementById("btn_mascota");
@@ -37,7 +40,7 @@ function seleccionarmascotajugador() {
     let sectionmascota = document.getElementById("seleccionar_mascota");
     sectionmascota.style.display = 'none';
 
-    let sectionataque = document.getElementById("seleccionar_ataque");
+    // mostrar sesión de los ataques
     sectionataque.style.display = 'flex';
 
     let hipodoge = document.getElementById('hipodoge');
@@ -136,10 +139,13 @@ function combate() {
 }
 
 function revisarvidas() {
+    let p_resultado = document.getElementById('#resultado');
     if (vidasenemigo == 0) {
-        mensajefinal("¡FELICITACIONES GANASTE!");
+        mensajefinal("¡FELICITACIONES GANASTE!🎉🎊");
+        // p_resultado.style.background = 'rgba(233, 239, 53, 0.556)';
     } else if (vidasjugador == 0) {
         mensajefinal("Los siento, perdiste");
+        // p_resultado.style.background = 'rgba(239, 53, 53, 0.556)';
     }
 }
 
@@ -176,8 +182,8 @@ function crearmensaje(resultado) {
     new_ataque_jugador.innerHTML = ataquejugador;
     new_ataque_enemigo.innerHTML = ataqueenemigo;
 
-       ataque_jugador.appendChild(new_ataque_jugador);
-       ataque_enemigo.appendChild(new_ataque_enemigo);
+    ataque_jugador.appendChild(new_ataque_jugador);
+    ataque_enemigo.appendChild(new_ataque_enemigo);
 }
 
 // Reinicio de juego 
