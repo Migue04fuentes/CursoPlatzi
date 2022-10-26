@@ -1,35 +1,54 @@
+// Contenedores
+const sectionataque = document.getElementById("seleccionar_ataque");
+const sectionreiniciar = document.getElementById('reiniciar');
+const sectionmascota = document.getElementById("seleccionar_mascota");
+// Botones
+const btnmascotajugador = document.getElementById("btn_mascota");
+const botonfuego = document.getElementById('btn_fuego');
+const botonagua = document.getElementById('btn_agua');
+const botontierra = document.getElementById('btn_tierra');
+const botonreiniciar = document.getElementById("btn_reiniciar");
+// Etiquetas de text
+const spanmascotajugador = document.getElementById('mascotajugador');
+const spanmascotaenemigo = document.getElementById("mascotaenemigo");
+
+const hipodoge = document.getElementById('hipodoge');
+const capipepo = document.getElementById('capipepo');
+const ratigueya = document.getElementById('ratigueya');
+
+const spanvidasjugador = document.getElementById("vidasjugador");
+const spanvidasenemigo = document.getElementById("vidasenemigo");
+
+const sectionmensaje = document.getElementById('resultado');
+
+const ataque_jugador = document.getElementById('ataque_jugador');
+const ataque_enemigo = document.getElementById('ataque_enemigo');
+
+
 let ataquejugador;
 let ataqueenemigo;
 let vidasjugador = 3;
 let vidasenemigo = 3;
 
-// contenedor de la sección de enfrentamientos
-let sectionataque = document.getElementById("seleccionar_ataque");
+
 
 
 // Función llamada al cargar la página
 function iniciarjuego() {
-    //    ocultar sesión de los ataques
-    sectionataque.style.display = 'none';
 
-    // ocultar botón de reinicio´
-    let sectionreiniciar = document.getElementById('reiniciar');
+    // ocultar
+    sectionataque.style.display = 'none';
     sectionreiniciar.style.display = 'none';
 
-
     // Selección de mascota
-    let btnmascotajugador = document.getElementById("btn_mascota");
     btnmascotajugador.addEventListener('click', seleccionarmascotajugador);
 
-
-    let botonfuego = document.getElementById('btn_fuego');
+    //Ataques
     botonfuego.addEventListener('click', ataquefuego);
-    let botonagua = document.getElementById('btn_agua');
     botonagua.addEventListener('click', ataqueagua);
-    let botontierra = document.getElementById('btn_tierra');
     botontierra.addEventListener('click', ataquetierra);
 
-    let botonreiniciar = document.getElementById("btn_reiniciar");
+    //Reiniciar
     botonreiniciar.addEventListener('click', reiniciarjuego);
 }
 
@@ -37,16 +56,11 @@ function iniciarjuego() {
 // Cógido para obtener la mascota seleccionada del jugador;
 function seleccionarmascotajugador() {
 
-    let sectionmascota = document.getElementById("seleccionar_mascota");
     sectionmascota.style.display = 'none';
 
     // mostrar sesión de los ataques
     sectionataque.style.display = 'flex';
 
-    let hipodoge = document.getElementById('hipodoge');
-    let capipepo = document.getElementById('capipepo');
-    let ratigueya = document.getElementById('ratigueya');
-    let spanmascotajugador = document.getElementById('mascotajugador');
     if (hipodoge.checked) {
         spanmascotajugador.innerHTML = 'Hipodoge';
     } else if (capipepo.checked) {
@@ -64,7 +78,6 @@ function seleccionarmascotajugador() {
 // Elección de la mascota aleatoria
 function selecionarmascotaenemigo() {
     let mascotaaleatorio = aleatorio(1, 3);
-    let spanmascotaenemigo = document.getElementById("mascotaenemigo");
     if (mascotaaleatorio == 1) {
         spanmascotaenemigo.innerHTML = 'Hipodoge';
     } else if (mascotaaleatorio == 2) {
@@ -110,9 +123,6 @@ function ataquealeatorioenemigo() {
 //Resultado de combate
 function combate() {
 
-    let spanvidasjugador = document.getElementById("vidasjugador");
-    let spanvidasenemigo = document.getElementById("vidasenemigo");
-
     if (ataqueenemigo == ataquejugador) {
         crearmensaje("EMPATE");
     } else if (ataquejugador == 'FUEGO' && ataqueenemigo == 'TIERRA') {
@@ -151,19 +161,18 @@ function revisarvidas() {
 
 // Mensaje de fin de juego
 function mensajefinal(resultadofinal) {
-    let sectionmensaje = document.getElementById('resultado');
 
     sectionmensaje.innerHTML = resultadofinal;
 
     // Ocultar botones al terminar juego
-    let botonfuego = document.getElementById('btn_fuego');
+    
     botonfuego.disabled = true;
-    let botonagua = document.getElementById('btn_agua');
+    
     botonagua.disabled = true;
-    let botontierra = document.getElementById('btn_tierra');
+    
     botontierra.disabled = true;
 
-    let sectionreiniciar = document.getElementById('reiniciar');
+    
     sectionreiniciar.style.display = 'block';
 
 }
@@ -171,9 +180,6 @@ function mensajefinal(resultadofinal) {
 
 // Mensaje de resultados del juego
 function crearmensaje(resultado) {
-    let sectionmensaje = document.getElementById('resultado');
-    let ataque_jugador = document.getElementById('ataque_jugador');
-    let ataque_enemigo = document.getElementById('ataque_enemigo');
 
     let new_ataque_jugador = document.createElement('p');
     let new_ataque_enemigo = document.createElement('p');
@@ -190,8 +196,6 @@ function crearmensaje(resultado) {
 function reiniciarjuego() {
     location.reload();
 }
-
-
 
 
 // Obtener números aleatorios
