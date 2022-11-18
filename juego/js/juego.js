@@ -12,9 +12,7 @@ const botonreiniciar = document.getElementById("btn_reiniciar");
 const spanmascotajugador = document.getElementById('mascotajugador');
 const spanmascotaenemigo = document.getElementById("mascotaenemigo");
 
-const hipodoge = document.getElementById('hipodoge');
-const capipepo = document.getElementById('capipepo');
-const ratigueya = document.getElementById('ratigueya');
+
 
 const spanvidasjugador = document.getElementById("vidasjugador");
 const spanvidasenemigo = document.getElementById("vidasenemigo");
@@ -24,13 +22,60 @@ const sectionmensaje = document.getElementById('resultado');
 const ataque_jugador = document.getElementById('ataque_jugador');
 const ataque_enemigo = document.getElementById('ataque_enemigo');
 
-
+const contenedor_tarjetas = document.getElementById('contenedor_tarjetas');
+let personajes = [];
 let ataquejugador;
 let ataqueenemigo;
+let opcionpersonajes;
+let mascotajugador;
 let vidasjugador = 3;
 let vidasenemigo = 3;
 
+let input_hipodoge;
+let input_capipepo;
+let input_ratigueya;
 
+// Clase de personajes
+class Nintendo {
+    constructor(nombre, foto, vida) {
+        this.nombre = nombre;
+        this.foto = foto;
+        this.vida = vida;
+        this.ataques = [];
+    }
+}
+
+// Personajes
+let hipodoge1 = new Nintendo('Hipodoge', './img/hipodoge.webp', 5);
+let capipepo1 = new Nintendo('Capipepo', './img/capipepo.webp', 5);
+let ratigueya1 = new Nintendo('Ratigueya', './img/ratigueya.webp', 5);
+
+
+// Ataques de personajes
+hipodoge1.ataques.push(
+    { nombre: '💧', id: 'btn_agua' },
+    { nombre: '💧', id: 'btn_agua' },
+    { nombre: '💧', id: 'btn_agua' },
+    { nombre: '🔥', id: 'btn_fuego' },
+    { nombre: '🌱', id: 'btn_tierra' }
+);
+
+capipepo1.ataques.push(
+    { nombre: '🌱', id: 'btn_tierra' },
+    { nombre: '🌱', id: 'btn_tierra' },
+    { nombre: '🌱', id: 'btn_tierra' },
+    { nombre: '💧', id: 'btn_agua' },
+    { nombre: '🔥', id: 'btn_fuego' }
+);
+ratigueya1.ataques.push(
+    { nombre: '🔥', id: 'btn_fuego' },
+    { nombre: '🔥', id: 'btn_fuego' },
+    { nombre: '🔥', id: 'btn_fuego' },
+    { nombre: '💧', id: 'btn_agua' },
+    { nombre: '🌱', id: 'btn_tierra' }
+);
+
+personajes.push(hipodoge1, capipepo1, ratigueya1);
 
 
 // Función llamada al cargar la página
@@ -39,6 +84,23 @@ function iniciarjuego() {
     // ocultar
     sectionataque.style.display = 'none';
     sectionreiniciar.style.display = 'none';
+
+    // Imprimir Personajes
+    personajes.forEach((personaje) => {
+        opcionpersonajes = `
+        <input type="radio" name="mascota" id="${personaje.nombre}" />
+        <label class="tarjeta_n64" for="${personaje.nombre}">
+            <p>${personaje.nombre}</p>
+            <img src="${personaje.foto}" alt="${personaje.nombre}">
+        </label>`
+
+        contenedor_tarjetas.innerHTML += opcionpersonajes;
+
+        // seleccionando input
+        input_hipodoge = document.getElementById('Hipodoge');
+        input_capipepo = document.getElementById('Capipepo');
+        input_ratigueya = document.getElementById('Ratigueya');
+    });
 
     // Selección de mascota
     btnmascotajugador.addEventListener('click', seleccionarmascotajugador);
@@ -61,30 +123,41 @@ function seleccionarmascotajugador() {
     // mostrar sesión de los ataques
     sectionataque.style.display = 'flex';
 
-    if (hipodoge.checked) {
-        spanmascotajugador.innerHTML = 'Hipodoge';
-    } else if (capipepo.checked) {
-        spanmascotajugador.innerHTML = 'Capipepo';
-    } else if (ratigueya.checked) {
-        spanmascotajugador.innerHTML = 'Ratigueya';
+    if (input_hipodoge.checked) {
+        spanmascotajugador.innerHTML = input_hipodoge.id;
+        mascotajugador = input_hipodoge.id;
+    } else if (input_capipepo.checked) {
+        spanmascotajugador.innerHTML = input_capipepo.id;
+        mascotajugador = input_capipepo.id;
+    } else if (input_ratigueya.checked) {
+        spanmascotajugador.innerHTML = input_ratigueya.id;
+        mascotajugador = input_ratigueya.id;
     } else {
         alert("Selecciona una mascota");
     }
 
+    extraerataques(mascotajugador);
     //llamado de la función después de elegir el usuario
     selecionarmascotaenemigo();
 }
 
+
+// Obtener ataques por id
+function extraerataques(mascotajugador){
+    let ataques;
+    for(let i = 0; i < personajes.length; i++){
+        if(mascotajugador === personajes[i].nombre){
+            ataques = personajes[i].ataques;
+        }
+    }
+    mostrarataques();
+}
+
 // Elección de la mascota aleatoria
 function selecionarmascotaenemigo() {
-    let mascotaaleatorio = aleatorio(1, 3);
-    if (mascotaaleatorio == 1) {
-        spanmascotaenemigo.innerHTML = 'Hipodoge';
-    } else if (mascotaaleatorio == 2) {
-        spanmascotaenemigo.innerHTML = "Capipepo";
-    } else {
-        spanmascotaenemigo.innerHTML = "Ratigueya";
-    }
+    let mascotaaleatorio = aleatorio(0, personajes.length -1);
+   
+        spanmascotaenemigo.innerHTML = personajes[mascotaaleatorio].nombre;
 }
 
 
@@ -165,14 +238,14 @@ function mensajefinal(resultadofinal) {
     sectionmensaje.innerHTML = resultadofinal;
 
     // Ocultar botones al terminar juego
-    
+
     botonfuego.disabled = true;
-    
+
     botonagua.disabled = true;
-    
+
     botontierra.disabled = true;
 
-    
+
     sectionreiniciar.style.display = 'block';
 
 }
