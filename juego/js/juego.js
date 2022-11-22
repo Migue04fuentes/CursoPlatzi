@@ -11,9 +11,9 @@ const spanmascotajugador = document.getElementById('mascotajugador');
 const spanmascotaenemigo = document.getElementById("mascotaenemigo");
 
 
-
-const spanvidasjugador = document.getElementById("vidasjugador");
-const spanvidasenemigo = document.getElementById("vidasenemigo");
+// Victorias de los jugadores
+const spanvictoriasjugador = document.getElementById("vidasjugador");
+const spanvictoriasenemigo = document.getElementById("vidasenemigo");
 
 const sectionmensaje = document.getElementById('resultado');
 
@@ -45,7 +45,9 @@ let indexataqueenemigo;
 // Botones de ataque
 let botones = [];
 
-
+// Victorias de los jugadores
+let victoriasjugador = 0;
+let victoriasenemigo = 0;
 
 let vidasjugador = 3;
 let vidasenemigo = 3;
@@ -240,38 +242,58 @@ function ataquealeatorioenemigo() {
     iniciarcombate();
 }
 
-function iniciarcombate(){
-    if(atq_jugador.length === 5){
+function iniciarcombate() {
+    if (atq_jugador.length === 5) {
         combate();
     }
 }
 
-function indexofoponentes(jugador, enemigo){
-    indexataquejugador = ataqueenemigo[jugador];
+function indexofoponentes(jugador, enemigo) {
+    indexataquejugador = atq_jugador[jugador];
     indexataqueenemigo = ataqueenemigo[enemigo];
 }
 
 //Resultado de combate
 function combate() {
 
-    for(let i = 0; i < atq_jugador.length; i++){
-        if(atq_jugador[i] === ataqueenemigo[i]){
+    for (let i = 0; i < atq_jugador.length; i++) {
+        if (atq_jugador[i] === ataqueenemigo[i]) {
             indexofoponentes(i, i);
             crearmensaje("EMPATE");
+        }else if (atq_jugador[i] === 'FUEGO' && ataqueenemigo[i] === 'TIERRA') {
+            indexofoponentes(i, i);
+            crearmensaje('GANASTE');
+            victoriasjugador++;
+            spanvictoriasjugador.innerHTML = victoriasjugador;
+        }else if (atq_jugador[i] === 'AGUA' && ataqueenemigo[i] === 'FUEGO') {
+            indexofoponentes(i, i);
+            crearmensaje('GANASTE');
+            victoriasjugador++;
+            spanvictoriasjugador.innerHTML = victoriasjugador;
+        }else if (atq_jugador[i] === 'TIERRA' && ataqueenemigo[i] === 'AGUA') {
+            indexofoponentes(i, i);
+            crearmensaje('GANASTE');
+            victoriasjugador++;
+            spanvictoriasjugador.innerHTML = victoriasjugador;
+        } else {
+            indexofoponentes(i, i);
+            crearmensaje('PERDISTE');
+            victoriasenemigo++;
+            spanvictoriasenemigo.innerHTML = victoriasenemigo;
         }
+        console.log(atq_jugador[i]);
     }
     //Revisar las vidas
-    revisarvidas();
+    revisarvictorias();
 }
 
-function revisarvidas() {
-    let p_resultado = document.getElementById('#resultado');
-    if (vidasenemigo == 0) {
+function revisarvictorias() {
+    if (victoriasjugador === victoriasenemigo) {
+        mensajefinal('EMPATE');
+    }else if(victoriasjugador > victoriasenemigo){
         mensajefinal("¡FELICITACIONES GANASTE!🎉🎊");
-        // p_resultado.style.background = 'rgba(233, 239, 53, 0.556)';
-    } else if (vidasjugador == 0) {
+    }else{
         mensajefinal("Los siento, perdiste");
-        // p_resultado.style.background = 'rgba(239, 53, 53, 0.556)';
     }
 }
 
@@ -321,5 +343,3 @@ function aleatorio(min, max) {
 
 // Que cargue el código javascript después que cargue en su totalidad la página;
 window.addEventListener('load', iniciarjuego);
-
-reto terminar validaciones de quien gana
