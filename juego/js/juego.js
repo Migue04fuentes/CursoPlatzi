@@ -199,14 +199,17 @@ function secuencia_ataques() {
                 atq_jugador.push('FUEGO');
                 console.log(atq_jugador);
                 boton.style.background = '#112f58';
+                boton.disabled = true;
             } else if (e.target.innerHTML === '💧') {
                 atq_jugador.push('AGUA');
                 console.log(atq_jugador);
                 boton.style.background = '#112f58';
+                boton.disabled = true;
             } else {
                 atq_jugador.push('TIERRA');
                 console.log(atq_jugador);
                 boton.style.background = '#112f58';
+                boton.disabled = true;
             }
             ataquealeatorioenemigo();
         });
@@ -301,15 +304,6 @@ function revisarvictorias() {
 function mensajefinal(resultadofinal) {
 
     sectionmensaje.innerHTML = resultadofinal;
-
-    // Ocultar botones al terminar juego
-
-    botonfuego.disabled = true;
-
-    botonagua.disabled = true;
-
-    botontierra.disabled = true;
-
 
     sectionreiniciar.style.display = 'block';
 
